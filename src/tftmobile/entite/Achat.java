@@ -12,7 +12,7 @@ import java.util.Date;
  * @author yasmi
  */
 public class Achat {
-    
+    //chamss
     private int idmembre;
     private int idticket;
     private Date dateachat;
