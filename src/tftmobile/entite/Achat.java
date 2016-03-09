@@ -14,6 +14,7 @@ import java.util.Date;
 public class Achat {
     //chamss
     //wissem
+    //yasmine
     private int idmembre;
     private int idticket;
     private Date dateachat;
