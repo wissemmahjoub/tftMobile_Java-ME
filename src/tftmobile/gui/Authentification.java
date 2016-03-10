@@ -95,7 +95,13 @@ public class Authentification extends Form implements CommandListener, Runnable{
                Midlet.mid.dis.setCurrent(erreur, this); 
               login.setString("");
               password.setString("");
-         }  else {
+         } 
+         
+         else if (login.getString().equals("")||(password.getString().equals("")))
+         {     Alert logiinn = new Alert("ATTENTION ","veuillez remplir tous les champs ", null, AlertType.CONFIRMATION);
+               Midlet.mid.dis.setCurrent(logiinn, this); 
+         }
+         else {
                 
                Alert a = new Alert("Bienvenue ",login.getString(), null, AlertType.CONFIRMATION);
                Midlet.mid.dis.setCurrent(a, this); 
