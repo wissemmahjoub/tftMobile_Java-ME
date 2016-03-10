@@ -31,7 +31,22 @@ public class Personne {
     public Personne() {
     }
 
-
+    
+    
+        public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance ) {
+        this.idpersonne = idpersonne;
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.email = email;
+        this.sexe = sexe;
+        this.login = login;
+        this.password = password;
+        this.datenaissance = datenaissance;
+    
+    }
+    
     public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance ,String avatar) {
         this.idpersonne = idpersonne;
         this.cin = cin;
