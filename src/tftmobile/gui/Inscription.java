@@ -205,7 +205,7 @@ String sexee = String.valueOf(sexe.getString(sexe.getSelectedIndex())).trim();
 
 String code=tfCodeconfirm.getString().trim();
 if(code.equals(randomCode(prenom))){
-  ht =(HttpConnection)Connector.open("http://localhost/piii/insert.php?"
+  ht =(HttpConnection)Connector.open("http://localhost/tftmobile/insert.php?"
           + "prenom=" + prenom 
           + "&nom=" + nom 
           + "&email=" + email 
@@ -235,7 +235,7 @@ if(code.equals(randomCode(prenom))){
 }
 else
 { System.out.print("Vérifier votre Code de confirmation ");
-            Alert AlertSmsCode = new Alert("access denied "," veuillez vérifier votre code de confirmation ", null, AlertType.WARNING);
+            Alert AlertSmsCode = new Alert("access denied "," veuillez v�rifier votre code de confirmation ", null, AlertType.WARNING);
             Midlet.mid.dis.setCurrent(AlertSmsCode, this); 
             Thread.sleep(2000);
             Midlet.mid.dis.setCurrent(new Authentification("Authentification ",Midlet.mid.dis)); }

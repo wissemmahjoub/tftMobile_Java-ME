@@ -32,12 +32,12 @@ public class Authentification extends Form implements CommandListener, Runnable{
      Personne pers;
      Display disp ;
   
-      String url = "http://localhost/piii/fichier.php?";
+      String url = "http://localhost/tftmobile/fichier.php?";
 
       
-    Command cminscrit = new Command("S'inscrire", Command.SCREEN, 0);
-    Command cmNewsLetter = new Command("NewsLetter", Command.SCREEN, 0);
-    Command cmlogin = new Command("Login", Command.SCREEN, 1);
+    Command cminscrit = new Command("S'inscrire", Command.BACK,1);
+    Command cmNewsLetter = new Command("NewsLetter", Command.BACK, 1);
+    Command cmlogin = new Command("Login", Command.SCREEN, 0);
     
     TextField login= new TextField("Login", null, 500, TextField.ANY);
     TextField password = new TextField("Mot de passe ", null, 500, TextField.PASSWORD);

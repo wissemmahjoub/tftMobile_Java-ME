@@ -78,7 +78,7 @@ StringBuffer str = new StringBuffer();
 String Mail1=Mail.getString().trim();
 
 
-  ht =(HttpConnection)Connector.open("http://localhost/piii/abonne.php?" + "abonne=" + Mail1 );
+  ht =(HttpConnection)Connector.open("http://localhost/tftmobile/abonne.php?" + "abonne=" + Mail1 );
 
            
               dt = ht.openDataInputStream();
@@ -90,7 +90,7 @@ String Mail1=Mail.getString().trim();
             }
             
             System.out.print("abonnement avec Succes");
-            Alert a = new Alert(Mail1 ," est abonné(e) avec succés ", null, AlertType.CONFIRMATION);
+            Alert a = new Alert(Mail1 ," est abonn�(e) avec succés ", null, AlertType.CONFIRMATION);
             Midlet.mid.dis.setCurrent(a, this); 
             Thread.sleep(1000);
             Midlet.mid.dis.setCurrent(new Authentification("Authentification ",Midlet.mid.dis));          

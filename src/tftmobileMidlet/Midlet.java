@@ -15,11 +15,12 @@ import tftmobile.gui.SplashTft;
  * @author wissem
  */
 public class Midlet extends MIDlet {
- public static Midlet mid;
+    
+   public static Midlet mid = null;
    public  Display dis = Display.getDisplay(this);
     public void startApp() 
     {
-     mid=this;
+     mid = this;
      dis.setCurrent(new SplashTft(this));
     
     }

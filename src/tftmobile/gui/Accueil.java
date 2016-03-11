@@ -14,6 +14,7 @@ import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Graphics;
 import javax.microedition.lcdui.Image;
+import javax.microedition.lcdui.List;
 import tftmobileMidlet.Midlet;
 
 /**
@@ -25,9 +26,10 @@ public class Accueil extends Canvas implements CommandListener{
     private Image selecteur;
     Display disp;
     private Midlet Midlet;
-     Command deconnection = new Command("deconnexion ", Command.SCREEN, 0);
+    SujetActualiteList lstp ;
+    Command deconnection = new Command("Deconnexion ", Command.SCREEN, 0);
     
-     int width = getWidth();
+    int width = getWidth();
     int height = getHeight();
     int x =(width/3)+9;
     int y =(height/3)+4;
@@ -40,6 +42,7 @@ public class Accueil extends Canvas implements CommandListener{
      */
     public Accueil(Midlet Midlet){
         this.Midlet = Midlet;
+        lstp = new SujetActualiteList("Actualites", List.IMPLICIT);
         try{
          addCommand(deconnection);
          setCommandListener(this);
@@ -57,8 +60,7 @@ public class Accueil extends Canvas implements CommandListener{
 
     public void paint(Graphics g) 
     {
-   
-    
+
         //set background color to overdraw what ever was previously displayed
         g.setColor(0x000000);
         g.fillRect(0,0, width, height);
@@ -103,10 +105,11 @@ public class Accueil extends Canvas implements CommandListener{
                     Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                }
       //####################### News ########################################     
-                //ici on va faire setCurrent-->(News)     
+                    
+                 
                if(x==89 && y==250)
                {
-                    Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
+                 Midlet.mid.dis.setCurrent(lstp);  
                }
        //####################### Video ########################################  
                 //ici on va faire setCurrent-->(Video)     
@@ -135,8 +138,9 @@ public class Accueil extends Canvas implements CommandListener{
         }
 
     public void commandAction(Command c, Displayable d) {
-    if (c==deconnection)
-    { Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));}
+    if (c == deconnection){ 
+        Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+                        }
     }
 
     }
