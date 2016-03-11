@@ -103,14 +103,15 @@ public class Accueil extends Canvas implements CommandListener{
                 //ici on va faire setCurrnt-->(Mail)     
                if(x==89 && y==180)
                {
-                    Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
+                    Midlet.mid.dis.setCurrent(new Mail("Mail",this.disp));
                }
       //####################### News ########################################     
                     
                  
                if(x==89 && y==250)
                {
-                 Midlet.mid.dis.setCurrent(lstp);  
+                 Midlet.mid.dis.setCurrent(lstp); 
+
                }
        //####################### Video ########################################  
                 //ici on va faire setCurrent-->(Video)     
@@ -128,7 +129,6 @@ public class Accueil extends Canvas implements CommandListener{
                 //ici on va faire setCurrent-->(CONTACTER FEDERATION)     
                if(x==159 && y==250)
                {
-                    Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                }
                     
                
