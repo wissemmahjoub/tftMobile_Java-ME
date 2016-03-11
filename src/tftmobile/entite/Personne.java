@@ -24,8 +24,17 @@ public class Personne {
     private String login;
     private String password;
     private Date datenaissance;
+
+    public String getNbrjeton() {
+        return nbrjeton;
+    }
+
+    public void setNbrjeton(String nbrjeton) {
+        this.nbrjeton = nbrjeton;
+    }
     private String role;
     private String avatar;
+    private String nbrjeton;
     private Date datedestruction;
 
     public Personne() {
@@ -61,7 +70,15 @@ public class Personne {
         this.avatar = avatar;
     }
     
-    
+       public Personne (int idpersonne , String login, String nom, String prenom, String nbrjeton)
+    {
+    this.idpersonne = idpersonne;
+    this.login = login;
+    this.nom = nom;
+    this.prenom = prenom;
+    this.nbrjeton = nbrjeton;
+    }
+
     public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance, String role, String avatar, Date datedestruction) {
         this.idpersonne = idpersonne;
         this.cin = cin;

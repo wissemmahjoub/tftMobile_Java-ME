@@ -17,6 +17,7 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.List;
 import tftmobileMidlet.Midlet;
 
+
 /**
  *
  * @author wissem
@@ -121,7 +122,7 @@ public class Accueil extends Canvas implements CommandListener{
                 //ici on va faire setCurrent-->(Achat)     
                if(x==159 && y==180)
                {
-                    Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
+                    Midlet.mid.dis.setCurrent(new ListMatchs("Reservation",List.IMPLICIT));
                }
         //######################CONTACTER FEDERATION ##########################  
                 //ici on va faire setCurrent-->(CONTACTER FEDERATION)     
