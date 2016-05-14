@@ -22,18 +22,18 @@ import tftmobileMidlet.Midlet;
  *
  * @author wissem
  */
-public class Accueil extends Canvas implements CommandListener{
+public class AccueilPrive extends Canvas implements CommandListener{
     private Image background;
     private Image selecteur;
     Display disp;
     private Midlet Midlet;
     SujetActualiteList lstp ;
-   
+ 
     
     int width = getWidth();
     int height = getHeight();
-    int x =(width/2);
-    int y =(height/4)+15;
+    int  x = (width/3)-5;
+    int  y = (height/2)-35;
 
     /**
      * The constructor attempts to load the named image and begins a timeout
@@ -41,12 +41,13 @@ public class Accueil extends Canvas implements CommandListener{
      * a pointer press, or a timeout
      * @param Midlet instance of MIDlet
      */
-    public Accueil(Midlet Midlet){
+    public AccueilPrive(Midlet Midlet){
         this.Midlet = Midlet;
         lstp = new SujetActualiteList("Actualites", List.IMPLICIT);
         try{
-        background = Image.createImage("/Images/page1.jpg");
-        selecteur = Image.createImage("/Images/select1.png");
+       
+        background = Image.createImage("/Images/private.jpg");
+        selecteur = Image.createImage("/Images/select2.png");
         //Thread t = new Thread(this);
         //t.start();
         }
@@ -73,32 +74,58 @@ public class Accueil extends Canvas implements CommandListener{
             switch (getGameAction(keyCode)) {
 
                 case UP:
-                    if (y!=110){
-                    y=y-140;}
+                    if (y!=125){
+                    y=y-90;}
                     break;
                     
                 case DOWN:
-                    if(y!=250){
-                    y=y+140;}
+                    if(y!=215){
+                    y=y+90;}
                     break;
-
+                case LEFT:
+                    if(x!=75){
+                    x=x-100;}
+                    break;
+                case RIGHT:
+                    if(x!=175){
+                    x=x+100;}
+                    break;
                     
                 case FIRE:
                     
                     
-                            
-     //########################## Espace Privé #####################################               
-               
-               if( y==235)
+
+         
+     //########################## Ticket #####################################               
+               //ici on va faire Midlet.mid.dis.setCurrent-->(Ticket)     
+               if(x==75 && y==125)
                {
-                    Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+                   System.out.println("-Ticket- Selected");
+                 //   Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                }
-      //######################### Espace publique  ######################################     
-                  
-               if( y==95)
+      //######################### Statistique ######################################     
+                //ici on va faire Midlet.mid.dis.setCurrent-->(Statistique)     
+               if(x==175 && y==125)
                {
-                     Midlet.mid.dis.setCurrent(new AccueilPublique(Midlet));
-               }            
+                    System.out.println("-Statistique- Selected");
+                    Midlet.mid.dis.setCurrent(new AbonneNewsLetter("NewsLetter",this.disp));
+               }
+      //####################### Reclamation ########################################     
+                  //ici on va faire Midlet.mid.dis.setCurrent-->(Reclamation)   
+                 
+               if(x==75 && y==215)
+               {
+                   System.out.println("-Reclamation- Selecteted");
+                 Midlet.mid.dis.setCurrent(new Mail("Reclamation", disp));
+
+               }
+       //####################### Deconneter ########################################  
+                //ici on va faire Midlet.mid.dis.setCurrent-->(Deconneter)     
+               if(x==175 && y==215)
+               {
+                   System.out.println("-Deconneter- Selected");
+                  Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+               }
 
                     break;
             }
@@ -106,7 +133,7 @@ public class Accueil extends Canvas implements CommandListener{
         }
 
     public void commandAction(Command c, Displayable d) {
-  
+   
     }
 
     }

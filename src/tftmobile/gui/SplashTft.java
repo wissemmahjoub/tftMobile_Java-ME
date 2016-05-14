@@ -28,7 +28,7 @@ public class SplashTft extends Canvas implements Runnable{
     public SplashTft(Midlet Midlet){
         this.Midlet = Midlet;
         try{
-        mImage = Image.createImage("/Images/TFTSplash.jpg");
+        mImage = Image.createImage("/Images/TFTSplashh.jpg");
         Thread t = new Thread(this);
         t.start();
         }
@@ -50,7 +50,7 @@ public class SplashTft extends Canvas implements Runnable{
     
     public void dismiss() {
         if (isShown())
-                  Midlet.mid.dis.setCurrent(new Authentification("Authentification",Midlet.mid.dis));
+                  Midlet.mid.dis.setCurrent(new Accueil(Midlet));
 
     }
 

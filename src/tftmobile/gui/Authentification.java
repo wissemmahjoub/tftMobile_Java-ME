@@ -106,7 +106,7 @@ public class Authentification extends Form implements CommandListener, Runnable{
                Alert a = new Alert("Bienvenue ",login.getString(), null, AlertType.CONFIRMATION);
                Midlet.mid.dis.setCurrent(a, this); 
               
-              Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));
+              Midlet.mid.dis.setCurrent(new AccueilPrive(Midlet.mid));
    }
           
          
