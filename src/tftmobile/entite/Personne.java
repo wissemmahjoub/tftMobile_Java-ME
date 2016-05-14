@@ -24,14 +24,6 @@ public class Personne {
     private String login;
     private String password;
     private Date datenaissance;
-
-    public String getNbrjeton() {
-        return nbrjeton;
-    }
-
-    public void setNbrjeton(String nbrjeton) {
-        this.nbrjeton = nbrjeton;
-    }
     private String role;
     private String avatar;
     private String nbrjeton;
@@ -40,9 +32,7 @@ public class Personne {
     public Personne() {
     }
 
-    
-    
-        public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance ) {
+    public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance ) {
         this.idpersonne = idpersonne;
         this.cin = cin;
         this.nom = nom;
@@ -53,7 +43,6 @@ public class Personne {
         this.login = login;
         this.password = password;
         this.datenaissance = datenaissance;
-    
     }
     
     public Personne(int idpersonne, String cin, String nom, String prenom, String adresse, String email, String sexe, String login, String password, Date datenaissance ,String avatar) {
@@ -70,8 +59,7 @@ public class Personne {
         this.avatar = avatar;
     }
     
-       public Personne (int idpersonne , String login, String nom, String prenom, String nbrjeton)
-    {
+    public Personne (int idpersonne , String login, String nom, String prenom, String nbrjeton){
     this.idpersonne = idpersonne;
     this.login = login;
     this.nom = nom;
@@ -94,12 +82,26 @@ public class Personne {
         this.avatar = avatar;
         this.datedestruction = datedestruction;
     }
-    public Personne (int idpersonne , String cin, String nom, String prenom)
-    {
+    public Personne (int idpersonne , String cin, String nom, String prenom){
     this.idpersonne = idpersonne;
     this.cin = cin;
     this.nom = nom;
     this.prenom = prenom;
+    }
+    
+    public Personne (int idpersonne , String nom, String prenom){
+    this.idpersonne = idpersonne;
+    this.nom = nom;
+    this.prenom = prenom;  
+    }
+    
+    public Personne (String nom, String prenom){
+    this.nom = nom;
+    this.prenom = prenom;  
+    }
+    
+    public Personne (String nom){
+    this.nom = nom;
     }
 
     public int getIdpersonne() {
@@ -206,7 +208,41 @@ public class Personne {
         this.datedestruction = datedestruction;
     }
 
-  
+    public String getNbrjeton() {
+        return nbrjeton;
+    }
+
+    public void setNbrjeton(String nbrjeton) {
+        this.nbrjeton = nbrjeton;
+    }
+
+    public String toString() {
+        return "Personne{" + "idpersonne=" + idpersonne + ", cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", email=" + email + ", sexe=" + sexe + ", login=" + login + ", password=" + password + ", datenaissance=" + datenaissance + ", role=" + role + ", avatar=" + avatar + ", nbrjeton=" + nbrjeton + ", datedestruction=" + datedestruction + '}';
+    }
+
+    public int hashCode() {
+        int hash = 7;
+        hash = 97 * hash + this.idpersonne;
+        hash = 97 * hash + (this.cin != null ? this.cin.hashCode() : 0);
+        return hash;
+    }
+
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Personne other = (Personne) obj;
+        if (this.idpersonne != other.idpersonne) {
+            return false;
+        }
+        if ((this.cin == null) ? (other.cin != null) : !this.cin.equals(other.cin)) {
+            return false;
+        }
+        return true;
+    }
     
     
 }

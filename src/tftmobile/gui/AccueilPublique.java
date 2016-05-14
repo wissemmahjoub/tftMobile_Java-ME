@@ -26,9 +26,11 @@ public class AccueilPublique extends Canvas implements CommandListener{
     private Image background;
     private Image selecteur;
     Display disp;
+    Command cmdback = new Command("Retour", Command.BACK, 1);
+    Command cmdlogin = new Command("Authentification", Command.BACK, 1);
+    Command cmdsign = new Command("Inscription", Command.BACK, 1);
     private Midlet Midlet;
     SujetActualiteList lstp ;
-  Command Connect = new Command("Sign in  ", Command.SCREEN, 0);
     
     int width = getWidth();
     int height = getHeight();
@@ -45,7 +47,10 @@ public class AccueilPublique extends Canvas implements CommandListener{
         this.Midlet = Midlet;
         lstp = new SujetActualiteList("Actualites", List.IMPLICIT);
         try{
-         addCommand(Connect); 
+         
+         addCommand(cmdsign);
+         addCommand(cmdback);
+         addCommand(cmdlogin);
          setCommandListener(this);
         background = Image.createImage("/Images/publique.jpg");
         selecteur = Image.createImage("/Images/select2.png");
@@ -99,7 +104,7 @@ public class AccueilPublique extends Canvas implements CommandListener{
                 case FIRE:
  
      //########################## News #####################################               
-               //ici on va faire Midlet.mid.dis.setCurrent-->(News)     
+               Midlet.mid.dis.setCurrent(new SujetActualiteList("SujetActualiteList",List.IMPLICIT));   
                if(x==75 && y==125)
                {
                    System.out.println("-News- Selected");
@@ -126,7 +131,7 @@ public class AccueilPublique extends Canvas implements CommandListener{
                if(x==175 && y==215)
                {
                    System.out.println("-Map- Selected");
-                    //Midlet.mid.dis.setCurrent(new map .....
+                    Midlet.mid.dis.setCurrent(new SplashMap(Midlet));
                }
        
                
@@ -137,9 +142,16 @@ public class AccueilPublique extends Canvas implements CommandListener{
         }
 
     public void commandAction(Command c, Displayable d) {
-   if (c == Connect){ 
-       Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
-                        }
+      
+        if (c == cmdlogin){ 
+            Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+                             }
+        if (c == cmdsign){ 
+            Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
+                             }
+        if(c==cmdback){
+            Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));
+        }
     }
 
     }

@@ -16,27 +16,26 @@ public class Actualite {
     
     private int idactualite;
     private String sujet;
-    private Vector description;
     private Date datepublication;
     private Date datedestruction;
+    private String description;
+
 
     public Actualite() {
     }
 
-    public Actualite(int idactualite, String sujet, Date datepublication, Date datedestruction) {
+    public Actualite(int idactualite, String sujet, String description, Date datepublication, Date datedestruction) {
         this.idactualite = idactualite;
         this.sujet = sujet;
-        description = new Vector();
+        this.description = description;
         this.datepublication = datepublication;
         this.datedestruction = datedestruction;
     }
-    
-    public Actualite(String sujet) {
+
+    public Actualite(String sujet, String description) {
         this.sujet = sujet;
-    }
-    
-    public Actualite(Vector description) {
         this.description = description;
+        
     }
 
     public int getIdactualite() {
@@ -55,13 +54,11 @@ public class Actualite {
         this.sujet = sujet;
     }
 
-    public Description[] getDescription() {
-        Description[] descriptions = new Description[description.size()];
-        description.copyInto(descriptions);
-        return descriptions;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescription(Vector description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -86,8 +83,8 @@ public class Actualite {
     }
 
     public int hashCode() {
-        int hash = 7;
-        hash = 23 * hash + this.idactualite;
+        int hash = 5;
+        hash = 97 * hash + this.idactualite;
         return hash;
     }
 
@@ -104,10 +101,6 @@ public class Actualite {
         }
         return true;
     }
-
     
-    public void addDescription(Description desc) {
-        description.addElement(desc);
-    }
     
 }

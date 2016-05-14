@@ -62,7 +62,7 @@ public class TFTHandler extends DefaultHandler  {
 
 
           //  System.out.println("++++" + NameJoueur1 + "+++" + LastNameJoueur2 + "----" + NameJoueur2 + "lll");
-            currentMatch = new Match(NameJoueur1,LastNameJoueur1,NameJoueur2,LastNameJoueur2,Integer.parseInt(IdTicket),DateMatch);
+//            currentMatch = new Match(NameJoueur1,LastNameJoueur1,NameJoueur2,LastNameJoueur2,Integer.parseInt(IdTicket),DateMatch);
             if (NameJoueur1 == null || LastNameJoueur1 == null) {
                 System.out.println("pas ok ok ok ok ok ok");}
             

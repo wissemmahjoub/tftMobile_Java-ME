@@ -28,6 +28,7 @@ public class AccueilPrive extends Canvas implements CommandListener{
     Display disp;
     private Midlet Midlet;
     SujetActualiteList lstp ;
+    Command cmdback = new Command("Retour", Command.BACK, 1);
  
     
     int width = getWidth();
@@ -104,11 +105,11 @@ public class AccueilPrive extends Canvas implements CommandListener{
                  //   Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                }
       //######################### Statistique ######################################     
-                //ici on va faire Midlet.mid.dis.setCurrent-->(Statistique)     
+                // Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                if(x==175 && y==125)
                {
                     System.out.println("-Statistique- Selected");
-                    Midlet.mid.dis.setCurrent(new AbonneNewsLetter("NewsLetter",this.disp));
+                    Midlet.mid.dis.setCurrent(new ListeJoueurs("Liste des joueurs", List.IMPLICIT));
                }
       //####################### Reclamation ########################################     
                   //ici on va faire Midlet.mid.dis.setCurrent-->(Reclamation)   
@@ -134,6 +135,10 @@ public class AccueilPrive extends Canvas implements CommandListener{
 
     public void commandAction(Command c, Displayable d) {
    
+        if(c==cmdback){
+            Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));
+        }
+        
     }
 
     }

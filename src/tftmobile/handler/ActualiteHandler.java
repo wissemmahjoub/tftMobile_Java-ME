@@ -5,25 +5,25 @@
  */
 package tftmobile.handler;
 
+import java.util.Date;
 import java.util.Vector;
+import org.w3c.dom.Text;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 import tftmobile.entite.Actualite;
-import tftmobile.entite.Description;
 
 /**
  *
  * @author yasmi
  */
-public class SujetActualiteHandler extends DefaultHandler {
+public class ActualiteHandler extends DefaultHandler {
     
     // this will hold all the data we read
     private Vector actVector;
     private Actualite act;
-    private Description desc;
  
-    public SujetActualiteHandler() {
+    public ActualiteHandler() {
         actVector = new Vector();
     }
  
@@ -40,13 +40,17 @@ public class SujetActualiteHandler extends DefaultHandler {
  
     // startElement is the opening part of the tag "<tagname...>"
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        if (qName.equals("actualite")) {
-            String sujet = attributes.getValue("sujet");
-            act = new Actualite(sujet);
-            if (sujet == null) {
-                throw new IllegalArgumentException("Person requires both givenname and familyname");
-                               }
-                                        } 
+         if(qName.equals("actualite"))
+        {
+              String sujet = attributes.getValue("sujet");
+              String description = attributes.getValue("description");
+              String datepublication = attributes.getValue("datepublication");
+              
+              
+              act = new Actualite(sujet, description);
+              
+          
+        }
     }
 
     public void endElement(String uri, String localName, String qName) throws SAXException {

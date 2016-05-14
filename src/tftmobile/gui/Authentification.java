@@ -33,11 +33,10 @@ public class Authentification extends Form implements CommandListener, Runnable{
      Display disp ;
   
       String url = "http://localhost/tftmobile/fichier.php?";
-
-      
-    Command cminscrit = new Command("S'inscrire", Command.BACK,1);
+    
     Command cmNewsLetter = new Command("NewsLetter", Command.BACK, 1);
     Command cmlogin = new Command("Login", Command.SCREEN, 0);
+    Command cmdback = new Command("Retour", Command.BACK, 1);
     
     TextField login= new TextField("Login", null, 500, TextField.ANY);
     TextField password = new TextField("Mot de passe ", null, 500, TextField.PASSWORD);
@@ -54,7 +53,7 @@ public class Authentification extends Form implements CommandListener, Runnable{
         append(login);
         append(password);
         addCommand(cmlogin);
-        addCommand(cminscrit);
+        addCommand(cmdback);
         addCommand(cmNewsLetter);
         setCommandListener(this);
         
@@ -62,13 +61,17 @@ public class Authentification extends Form implements CommandListener, Runnable{
 
     public void commandAction(Command c, Displayable d) {
       
-          if(c==cminscrit){
-        Midlet.mid.dis.setCurrent(new Inscription("Inscription",Midlet.mid.dis));}
-          if(c==cmNewsLetter){
-        Midlet.mid.dis.setCurrent(new AbonneNewsLetter("NewsLetter",Midlet.mid.dis));}
-          if (c == cmlogin) {
+
+       if(c==cmNewsLetter){
+           Midlet.mid.dis.setCurrent(new AbonneNewsLetter("NewsLetter",Midlet.mid.dis));
+       }
+       if (c == cmlogin) {
             Thread th = new Thread(this);
             th.start();
+        }
+       
+       if(c==cmdback){
+            Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));
         }
 
    }
