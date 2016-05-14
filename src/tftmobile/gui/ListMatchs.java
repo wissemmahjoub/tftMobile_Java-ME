@@ -31,7 +31,7 @@ import tftmobileMidlet.Midlet;
  */
 public class ListMatchs extends List implements CommandListener, Runnable {
     
-      Command cmdBack = new Command("Back", Command.SCREEN, 0);
+    Command cmdBack = new Command("Back", Command.SCREEN, 0);
     Match[] match;
     StringBuffer sb;
        private Vector Demandev;
@@ -43,24 +43,21 @@ public class ListMatchs extends List implements CommandListener, Runnable {
 
     public ListMatchs(String title, int listType) {
         super(title, listType);
-      
         Thread th = new Thread(this);
         th.start();
     }
 
     public void commandAction(Command c, Displayable d) {
         if (c == cmdBack) {
-            //disp.setCurrent(loadingDialog);
-            Thread th = new Thread(this);
-            th.start();
+            Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid)); 
         }
            if (c == List.SELECT_COMMAND){
                
            int idperson = person[this.getSelectedIndex()].getIdpersonne();
                 String log = person[this.getSelectedIndex()].getLogin();
-                 String Name = person[this.getSelectedIndex()].getNom();
-                  String LastName  = person[this.getSelectedIndex()].getPrenom();
-                   String jeton = person[this.getSelectedIndex()].getNbrjeton();
+                String Name = person[this.getSelectedIndex()].getNom();
+                String LastName  = person[this.getSelectedIndex()].getPrenom();
+                String jeton = person[this.getSelectedIndex()].getNbrjeton();
                
                Personne p = new Personne(idperson, log, Name, LastName, jeton);
                
@@ -89,7 +86,7 @@ public class ListMatchs extends List implements CommandListener, Runnable {
             // get a parser object
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
             // get an InputStream from somewhere (could be HttpConnection, for example)
-            HttpConnection hc = (HttpConnection) Connector.open("http://localhost/TFTMobile/Match/select.php");//people.xml est un exemple
+            HttpConnection hc = (HttpConnection) Connector.open("http://localhost/tftmobile/Match/select.php");//people.xml est un exemple
             System.out.println(hc.getFile());
             DataInputStream dis = new DataInputStream(hc.openDataInputStream());
             parser.parse(dis, matchHandler);
@@ -100,7 +97,7 @@ public class ListMatchs extends List implements CommandListener, Runnable {
              MembreHandler membreHandler = new MembreHandler();
            
             // get an InputStream from somewhere (could be HttpConnection, for example)
-            HttpConnection hc2 = (HttpConnection) Connector.open("http://localhost/TFTMobile/membre/people.xml");//people.xml est un exemple
+            HttpConnection hc2 = (HttpConnection) Connector.open("http://localhost/tftmobile/membre/people.xml");//people.xml est un exemple
             System.out.println(hc2.getFile());
             DataInputStream dis2 = new DataInputStream(hc2.openDataInputStream());
             parser.parse(dis2, membreHandler);

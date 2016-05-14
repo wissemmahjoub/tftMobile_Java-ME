@@ -86,7 +86,7 @@ public class Mail extends Form implements CommandListener, Runnable {
     public void commandAction(Command c, Displayable d) {
         if(c==Envoyer){
            
-            String url2 = "http://localhost/essaiM/mailchams.php?mailee="+ tfadr.getString()+"&pwd=" + tfpwd.getString() + "&sujet=" + tfsujet.getString() + "&message=" + tftxt.getString();
+            String url2 = "http://localhost/tftmobile/mailchams.php?mailee="+ tfadr.getString()+"&pwd=" + tfpwd.getString() + "&sujet=" + tfsujet.getString() + "&message=" + tftxt.getString();
 try {
 hm = (HttpConnection) Connector.openInputStream(url2);
    } catch (IOException ex) {
@@ -97,8 +97,7 @@ hm = (HttpConnection) Connector.openInputStream(url2);
          
         if(c==back){
            
-      //  Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
-  
+            Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));       
                 }
     }
     public void run() {
