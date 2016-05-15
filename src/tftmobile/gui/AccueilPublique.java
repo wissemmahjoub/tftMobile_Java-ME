@@ -117,16 +117,20 @@ public class AccueilPublique extends Canvas implements CommandListener{
                     System.out.println("-newsLetter- Selected");
                     Midlet.mid.dis.setCurrent(new AbonneNewsLetter("NewsLetter",this.disp));
                }
-      //####################### Contact ########################################     
+       //####################### Contact ########################################     
                   //ici on va faire Midlet.mid.dis.setCurrent-->(Contact)   
                  
                if(x==75 && y==215)
                {
                    System.out.println("-CONTACT- Selecteted");
-                // Midlet.mid.dis.setCurrent(new SujetActualiteList("SujetActualiteList", width));
+                try {
+                    Midlet.mid.dis.setCurrent(new GoogleMapsMarkerCanvas_contact(Midlet, this));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
 
                }
-       //####################### Map ########################################  
+       //####################### Map ######################################## 
                 //ici on va faire Midlet.mid.dis.setCurrent-->(Map)     
                if(x==175 && y==215)
                {
