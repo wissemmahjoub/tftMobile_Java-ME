@@ -26,7 +26,7 @@ public class Personne {
     private Date datenaissance;
     private String role;
     private String avatar;
-    private String nbrjeton;
+    private int nbrjeton;
     private Date datedestruction;
 
     public Personne() {
@@ -59,7 +59,7 @@ public class Personne {
         this.avatar = avatar;
     }
     
-    public Personne (int idpersonne , String login, String nom, String prenom, String nbrjeton){
+    public Personne (int idpersonne , String login, String nom, String prenom, int nbrjeton){
     this.idpersonne = idpersonne;
     this.login = login;
     this.nom = nom;
@@ -208,11 +208,11 @@ public class Personne {
         this.datedestruction = datedestruction;
     }
 
-    public String getNbrjeton() {
+    public int getNbrjeton() {
         return nbrjeton;
     }
 
-    public void setNbrjeton(String nbrjeton) {
+    public void setNbrjeton(int nbrjeton) {
         this.nbrjeton = nbrjeton;
     }
 

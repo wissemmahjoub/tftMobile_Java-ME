@@ -29,7 +29,7 @@ public class AccueilPrive extends Canvas implements CommandListener{
     private Midlet Midlet;
     SujetActualiteList lstp ;
     Command cmdback = new Command("Retour", Command.BACK, 1);
- 
+   Command cmddeconnect = new Command("Deconnecter", Command.BACK, 1);
     
     int width = getWidth();
     int height = getHeight();
@@ -46,8 +46,9 @@ public class AccueilPrive extends Canvas implements CommandListener{
         this.Midlet = Midlet;
         lstp = new SujetActualiteList("Actualites", List.IMPLICIT);
         try{
-       
-        background = Image.createImage("/Images/private.jpg");
+       addCommand(cmddeconnect);
+       setCommandListener(this);
+        background = Image.createImage("/Images/privatee.jpg");
         selecteur = Image.createImage("/Images/select2.png");
         //Thread t = new Thread(this);
         //t.start();
@@ -125,7 +126,7 @@ public class AccueilPrive extends Canvas implements CommandListener{
                if(x==175 && y==215)
                {
                    System.out.println("-Deconneter- Selected");
-                  Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+                  Midlet.mid.dis.setCurrent(new ProfilePortail());
                }
 
                     break;
@@ -138,6 +139,10 @@ public class AccueilPrive extends Canvas implements CommandListener{
         if(c==cmdback){
             Midlet.mid.dis.setCurrent(new Accueil(Midlet.mid));
         }
+        
+         if (c == cmddeconnect){ 
+            Midlet.mid.dis.setCurrent(new Authentification("Authentification",this.disp));
+                             }
         
     }
 

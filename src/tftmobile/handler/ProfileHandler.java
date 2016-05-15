@@ -5,23 +5,24 @@
  */
 package tftmobile.handler;
 
+import java.util.Date;
 import java.util.Vector;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-import tftmobile.entite.Match;
-
 import tftmobile.entite.Personne;
+
 
 /**
  *
- * @author malox94
+ * @author Mustapha
  */
-public class MembreHandler extends DefaultHandler {
+public class ProfileHandler extends DefaultHandler{
+    
         // this will hold all the data we read
     private Vector MembreVector;
  
-    public MembreHandler() {
+    public ProfileHandler() {
         MembreVector = new Vector();
     }
  
@@ -56,15 +57,27 @@ public class MembreHandler extends DefaultHandler {
             String nom = attr.getValue("nom");
             String prenom = attr.getValue("prenom");
             String nbrjeton = attr.getValue("nbrjeton");
-            
-            
+            String sexe = attr.getValue("sexe");
+            String cin = attr.getValue("cin");
+             String avatar = attr.getValue("avatar");
+             String email = attr.getValue("email");
 
 
-
+            // Personne (int idpersonne , String cin, String nom, String prenom, String sexe, String email, String avatar,int nbrjeton)
+    // Personne (int idpersonne , String cin, String nom, String prenom, String sexe, String email, String avatar,int nbrjeton, String login)
+     
           //  System.out.println("++++" + NameJoueur1 + "+++" + LastNameJoueur2 + "----" + NameJoueur2 + "lll");
-            currentMembre = new Personne(Integer.parseInt(idpersonne),login,nom,prenom,Integer.parseInt(nbrjeton));
+            currentMembre = new Personne();
+            currentMembre.setAvatar(avatar);
+            currentMembre.setCin(cin);
+            currentMembre.setEmail(email);
+            currentMembre.setNom(nom);
+            currentMembre.setPrenom(prenom);
+            currentMembre.setLogin(login);
+            currentMembre.setNbrjeton(Integer.parseInt(nbrjeton));
+            currentMembre.setIdpersonne(Integer.parseInt(idpersonne));
              if (login == null || nom == null) {
-                System.out.println("pas ok ok ok ok ok ok");}
+                System.out.println("Oh lala");}
             
         } 
     
@@ -83,5 +96,5 @@ public class MembreHandler extends DefaultHandler {
     }
  
  
-    
+ 
 }

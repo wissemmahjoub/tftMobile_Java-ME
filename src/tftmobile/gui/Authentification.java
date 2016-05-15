@@ -31,7 +31,9 @@ public class Authentification extends Form implements CommandListener, Runnable{
      StringBuffer sb;
      Personne pers;
      Display disp ;
-  
+     
+     public static int sessionIdMembre;
+     
       String url = "http://localhost/tftmobile/fichier.php?";
     
     Command cmNewsLetter = new Command("NewsLetter", Command.BACK, 1);
@@ -90,9 +92,11 @@ public class Authentification extends Form implements CommandListener, Runnable{
             }
              String[] tab = Split(sb.toString().trim(), "+");
             System.out.println(tab[0]);
+            // icic la recuperation de lid
+              System.out.println(sb.toString().trim());
               
-        
-         if(sb.toString().trim().equals("no")/*||(password.getString()=="")*/) {    
+         sessionIdMembre = Integer.parseInt(sb.toString().trim());
+         if(sb.toString().trim().equals("0")/*||(password.getString()=="")*/) {    
              Alert erreur = new Alert("Attention!","Veuillez verifier vos informations", null, AlertType.ERROR);
              
                Midlet.mid.dis.setCurrent(erreur, this); 
