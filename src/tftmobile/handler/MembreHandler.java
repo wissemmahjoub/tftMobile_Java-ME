@@ -33,7 +33,7 @@ public class MembreHandler extends DefaultHandler {
  
     // VARIABLES TO MAINTAIN THE PARSER'S STATE DURING PROCESSING
  
-    private Personne currentMembre;
+    static Personne currentMembre;
    
  
     // XML EVENT PROCESSING METHODS (DEFINED BY DefaultHandler)
@@ -48,22 +48,21 @@ public class MembreHandler extends DefaultHandler {
      * @param attr
      */
     public void startElement(String ur, String locName, String qNa, Attributes attr) {
-        if (qNa.equals("membre")) {
+        if (qNa.equals("connected")) {
 		    // create new Person object
             
-            String idpersonne = attr.getValue("idpersonne");
-            String login = attr.getValue("login");
-            String nom = attr.getValue("nom");
-            String prenom = attr.getValue("prenom");
-            String nbrjeton = attr.getValue("nbrjeton");
+            String idpersonne = attr.getValue("ID_Personne");
+            String nom = attr.getValue("Name");
+            String prenom = attr.getValue("Last_Name");
+            String nbrjeton = attr.getValue("Nbr_Jeton");
             
             
 
 
-
+            
           //  System.out.println("++++" + NameJoueur1 + "+++" + LastNameJoueur2 + "----" + NameJoueur2 + "lll");
-            currentMembre = new Personne(Integer.parseInt(idpersonne),login,nom,prenom,Integer.parseInt(nbrjeton));
-             if (login == null || nom == null) {
+            currentMembre = new Personne(Integer.parseInt(idpersonne),nom,prenom,Integer.parseInt(nbrjeton));
+             if (prenom == null || nom == null) {
                 System.out.println("pas ok ok ok ok ok ok");}
             
         } 
@@ -72,7 +71,7 @@ public class MembreHandler extends DefaultHandler {
     // endElement is the closing part ("</tagname>"), or the opening part if it ends with "/>"
     // so, a tag in the form "<tagname/>" generates both startElement() and endElement()
     public void endElement(String ur, String locName, String qNa) throws SAXException {
-        if (qNa.equals("membre")) {
+        if (qNa.equals("connected")) {
             
             // add completed Person object to collection
            MembreVector.addElement(currentMembre);

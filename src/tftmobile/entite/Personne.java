@@ -104,6 +104,15 @@ public class Personne {
     this.nom = nom;
     }
 
+    public Personne(int idpersonne, String nom, String prenom, int nbrjeton) {
+        this.idpersonne = idpersonne;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.nbrjeton = nbrjeton;
+    }
+
+    
+    
     public int getIdpersonne() {
         return idpersonne;
     }

@@ -29,11 +29,15 @@ import tftmobileMidlet.Midlet;
 public class Authentification extends Form implements CommandListener, Runnable{
     private Image image1;
      StringBuffer sb;
+     StringBuffer sb2;
      Personne pers;
      Display disp ;
      
      public static int sessionIdMembre;
+      static String sessionlog;
+      static String sessionpass;
      
+      String url2 = "http://localhost/tftmobile/fichier3.php?";
       String url = "http://localhost/tftmobile/fichier.php?";
     
     Command cmNewsLetter = new Command("NewsLetter", Command.BACK, 1);
@@ -81,6 +85,7 @@ public class Authentification extends Form implements CommandListener, Runnable{
     public void run() {
         
          url += "&login=" + login.getString().trim() + "&password=" + password.getString().trim();
+         url2 += "&login=" + login.getString().trim() + "&password=" + password.getString().trim();
         try {
             HttpConnection hc = (HttpConnection) Connector.open(url);
             DataInputStream dis = new DataInputStream(hc.openDataInputStream());
@@ -94,6 +99,24 @@ public class Authentification extends Form implements CommandListener, Runnable{
             System.out.println(tab[0]);
             // icic la recuperation de lid
               System.out.println(sb.toString().trim());
+              
+              
+              HttpConnection hc2 = (HttpConnection) Connector.open(url2);
+            DataInputStream dis2 = new DataInputStream(hc2.openDataInputStream());
+
+            int ch2;
+            sb2 = new StringBuffer();
+            while ((ch2 = dis2.read()) != -1) {
+                sb2.append((char) ch2);
+            }
+             String[] tab2 = Split(sb2.toString().trim(), "+");
+            System.out.println(tab[0] + "aaaaaa");
+            // icic la recuperation de lid
+              System.out.println(sb2.toString().trim());
+              
+              
+              
+              
               
          sessionIdMembre = Integer.parseInt(sb.toString().trim());
          if(sb.toString().trim().equals("0")/*||(password.getString()=="")*/) {    
@@ -121,6 +144,10 @@ public class Authentification extends Form implements CommandListener, Runnable{
 
                 }
     
+        
+        
+        
+        
 
     }
     

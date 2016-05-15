@@ -102,7 +102,7 @@ public class AccueilPrive extends Canvas implements CommandListener{
                //ici on va faire Midlet.mid.dis.setCurrent-->(Ticket)     
                if(x==75 && y==125)
                {
-                   System.out.println("-Ticket- Selected");
+                   Midlet.mid.dis.setCurrent(new MenuAchReser(Midlet.mid));
                  //   Midlet.mid.dis.setCurrent(new Inscription("Inscription",this.disp));
                }
       //######################### Statistique ######################################     

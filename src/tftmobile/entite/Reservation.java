@@ -20,6 +20,11 @@ public class Reservation {
     public Reservation() {
     }
 
+    public Reservation(int idmembre) {
+        this.idmembre = idmembre;
+    }
+    
+
     public Reservation(int idmembre, int idticket, Date datereservation) {
         this.idmembre = idmembre;
         this.idticket = idticket;

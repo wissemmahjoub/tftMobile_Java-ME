@@ -26,6 +26,20 @@ public class Ticket {
         this.prix = prix;
     }
 
+    public Ticket(int idticket, int nbrticket, float prix) {
+        this.idticket = idticket;
+        this.nbrticket = nbrticket;
+        this.prix = prix;
+    }
+
+    public Ticket(int nbrticket, float prix) {
+        this.nbrticket = nbrticket;
+        this.prix = prix;
+    }
+
+    
+    
+    
     public int getIdticket() {
         return idticket;
     }
@@ -56,6 +70,10 @@ public class Ticket {
 
     public void setPrix(float prix) {
         this.prix = prix;
+    }
+
+    public String toString() {
+        return "Ticket{" + "idticket=" + idticket + ", nbrticket=" + nbrticket + ", idmatch=" + idmatch + ", prix=" + prix + '}';
     }
 
     

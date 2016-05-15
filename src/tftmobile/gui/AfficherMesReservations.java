@@ -17,41 +17,41 @@ import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
 import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.List;
+import tftmobile.entite.Match;
 import tftmobile.entite.Matchs;
 import tftmobile.entite.Personne;
 import tftmobile.entite.Ticket;
 import tftmobileMidlet.Midlet;
-import tftmobile.handler.MembreHandler;
 
 /**
  *
  * @author malox94
  */
-public class Achat extends Form implements CommandListener{
+public class AfficherMesReservations extends Form implements CommandListener{
      HttpConnection hc;
     DataInputStream dis;
     StringBuffer sb;
- String url = "http://localhost/TFTMobile/Achat/insert.php?";
- String url2 = "http://localhost/TFTMobile/Achat/UpdateJeton.php?";
+ String url = "http://localhost/TFTMobile/Reservation/Delete.php?";
+
     Matchs matchs ;
     Personne personne;
     Ticket ticket;
      Command cmdBack = new Command("Back", Command.SCREEN, 0);
-      Command cmdAchat = new Command("Acheter", Command.SCREEN, 0);
+      Command cmdAnnuler = new Command("Annuler", Command.SCREEN, 0);
 //    ListMatchs ls = new ListMatchs("Reservation", 0);
-    public Achat(String title) {
+    public AfficherMesReservations (String title, Personne personne) {
         super(title);
         // this.matchs = matchs;
-      
+         this.personne = personne;
        // System.out.println(matchs.getNameJoueur1());
         //append(matchs.getNameJoueur1()+ " " + matchs.getLastNameJoueur1() + " VS " + matchs.getNameJoueur2() + " " + matchs.getLastNameJoueur2());
        // append("Le " + matchs.getDateMatch());
-        append("Vous avez actuellement " + ListMatchs.p.getNbrjeton());
+        append("Vous avez actuellement " + personne.getNbrjeton());
         addCommand(cmdBack);
         setCommandListener(this);
         
     }
-     public Achat(String title, Matchs matchs  , Ticket tickets) {
+     public AfficherMesReservations(String title, Matchs matchs, Ticket tickets) {
         super(title);
         // this.matchs = matchs;
          this.matchs = matchs;
@@ -64,35 +64,33 @@ public class Achat extends Form implements CommandListener{
         append("Le prix du ticket est de " + ticket.getPrix());
         addCommand(cmdBack);
         setCommandListener(this);
-        addCommand(cmdAchat);
+        addCommand(cmdAnnuler);
         setCommandListener(this);
         
     }
     
     
     public void commandAction(Command c, Displayable d) {
-        if (c==cmdAchat){
+        if (c==cmdAnnuler){
             
-            if (ListMatchs.p.getNbrjeton() >= ticket.getNbrticket()){
-            
+        
             try {
-                System.out.println("aaaaaaaaaabbbbbbbbb");
+              
                 hc = (HttpConnection) Connector.
                 open(url + "membre=" + ListMatchs.p.getIdpersonne() + "&ticket=" + matchs.getIdticket() );
                 System.out.println(ListMatchs.p.getIdpersonne() + " test " + matchs.getIdticket());
                 dis = hc.openDataInputStream();
 
-                  hc = (HttpConnection) Connector.
-                open(url2 + "membre=" + ListMatchs.p.getIdpersonne()  + "&jeton=" + (ListMatchs.p.getNbrjeton() - ticket.getNbrticket()) );
-                System.out.println(ListMatchs.p.getIdpersonne() + " test " + matchs.getIdticket());
-                dis = hc.openDataInputStream();
+              
                 
-                // Alert succés de l'achat
-                Alert a = new Alert("Succes", "Votre achat a été effectué avec succés, Votre solde est maintenant de  " + (personne.getNbrjeton() - ticket.getNbrticket()), null, AlertType.CONFIRMATION);
+                
+                 Midlet.mid.dis.setCurrent(new ConsultationReservation("Mes Reservations",List.IMPLICIT));
+                
+                 // Alert succés de l'achat
+                Alert a = new Alert("Succes", "Votre reservation a bien été annulée  " , null, AlertType.CONFIRMATION);
                 a.setTimeout(5000);
                 Midlet.mid.dis.setCurrent(a);
-                
-                
+                 
                 int ascii;
                 sb = new StringBuffer();
 
@@ -120,9 +118,8 @@ public class Achat extends Form implements CommandListener{
               Alert a = new Alert("Echec", "Vous n'avez pas suffisemment de solde pour faire cet achat ", null, AlertType.CONFIRMATION);
                 a.setTimeout(5000);
                 Midlet.mid.dis.setCurrent(a);
-        }}
+        }
    if (c==cmdBack){
-      Midlet.mid.dis.setCurrent(new ListMatchs("Achat",List.IMPLICIT));
+      Midlet.mid.dis.setCurrent(new ConsultationReservation("Mes Reservations",List.IMPLICIT));
    }
-    }
-}
+}}
